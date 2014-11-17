@@ -25,5 +25,5 @@
         "phpunit/phpunit": "4.3.5"
     },
 
-    "bin": ["cli"]
+    "bin": ["configen"]
 }

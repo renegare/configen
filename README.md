@@ -1,3 +1,7 @@
 # ConfigGen (Docker CLI Application)
 
-Why? because I can :p
+helpful tool to render a file containing mustache tags.
+
+You can inject environment variables to be used in the templates.
+
+## Example 

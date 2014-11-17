@@ -1,3 +1,3 @@
 FROM renegare/denv-canp:latest
 
-CMD ["/bin/bash"]
+ENTRYPOINT ["/app/configen"]
