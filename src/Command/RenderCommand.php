@@ -15,14 +15,33 @@ class RenderCommand extends Command {
         $this
             ->setName('render')
             ->setDescription('given a file (mustache template), variables will be replaced with environment variables')
-            // ->addArgument('name', InputArgument::OPTIONAL, 'Who do you want to greet?')
-            // ->addOption('yell', null, InputOption::VALUE_NONE, 'If set, the task will yell in uppercase letters')
+            ->addArgument('file', InputArgument::REQUIRED, 'file path to render')
+            ->addOption('env', '-e', InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED, 'expose environment variable to template')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $file = $input->getArgument('file');
+        $exposedEnv = $input->getOption('env');
 
+        $m = new \Mustache_Engine;
+        $data = [];
+        foreach($exposedEnv as $key) {
+            $value = '';
+
+            if(preg_match('/^([\w0-9_]+)=(.*)$/', $key, $matches)) {
+                $key = $matches[1];
+                $value = $matches[2];
+            }
+
+            if(!$value) {
+                $value = getenv($key);
+            }
+
+            $data[$key] = $value;
+        }
+        $output->writeln($m->render(file_get_contents($file), $data));
     }
 
 }
