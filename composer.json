@@ -1,0 +1,24 @@
+{
+    "name": "renegare/configen",
+    "description": "Generate yaml config based on DOCKER environment variables",
+    "authors": [{
+        "name": "Mudi Ugbowanko",
+        "email": "mudi@renegare.com"
+    }],
+
+    "autoload": {
+        "psr-4": {
+            "Renegare\\Configen\\": "src",
+            "Renegare\\Configen\\Test\\": "test"
+        }
+    },
+
+    "require": {
+        "php": ">=5.4.0",
+        "renegare/will": "dev-master"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "4.3.5"
+    }
+}
