@@ -10,5 +10,7 @@ class Application extends ConsoleApplication {
      */
     public function __construct($version = '%version%') {
         parent::__construct('Configen', $version);
+
+        $this->add(new Command\RenderCommand);
     }
 }
