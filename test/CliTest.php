@@ -5,6 +5,8 @@ namespace Renegare\Configen\Test;
 class CliTest extends BaseTestCase {
 
     public function testSomething() {
-        $this->assertTrue(false);
+        $tester = $this->getApplicationTester();
+        $tester->run([]);
+        $this->assertRegexp('/Configen/', $tester->getDisplay());
     }
 }
