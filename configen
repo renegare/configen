@@ -3,7 +3,7 @@
 
 $expectedAutoloaders = [
 	__DIR__ . '/vendor/autoload.php',
-	__DIR__ . '/../../vendor/autoload.php'
+	__DIR__ . '/../../autoload.php'
 ];
 
 foreach ($expectedAutoloaders as $file) {
@@ -13,7 +13,9 @@ foreach ($expectedAutoloaders as $file) {
     }
 }
 
-throw new \RuntimeException('Composer autoload file not found! Are you using a custom php/composer setup?');
+if(!isset($loader)) {
+	throw new \RuntimeException('Composer autoload file not found! Are you using a custom php/composer setup?');
+}
 
 $app = new Renegare\Configen\Application();
 $app->run();
