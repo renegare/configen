@@ -1,13 +1,13 @@
-# ConfigGen (Docker CLI Application)
+# ConfigGen
 
-helpful tool to render a file containing mustache tags.
+Helpful tool to render a file containing mustache tags using environment variables as data (e.g configuration template).
 
 You can inject environment variables to be used in the templates.
 
 ## Example
 
 ```
-$ configen /path/to/file -e EXISTING_ENV -e CUSTOM_VAR=Something
+$ configen /path/to/file.mustache -e EXISTING_ENV -e CUSTOM_VAR=Something
 ```
 
 ## Installation

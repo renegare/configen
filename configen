@@ -1,7 +1,19 @@
 #!/usr/bin/env php
 <?php
 
-require_once 'vendor/autoload.php';
+$expectedAutoloaders = [
+	__DIR__ . '/vendor/autoload.php',
+	__DIR__ . '/../../vendor/autoload.php'
+];
+
+foreach ($expectedAutoloaders as $file) {
+    if (file_exists($file)) {
+        $loader = require_once $file;
+        break;
+    }
+}
+
+throw new \RuntimeException('Composer autoload file not found! Are you using a custom php/composer setup?');
 
 $app = new Renegare\Configen\Application();
 $app->run();
